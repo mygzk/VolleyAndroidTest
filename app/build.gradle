@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "23.0.3"
+    buildToolsVersion '21.1.2'
 
     defaultConfig {
         applicationId "com.example.demo"
@@ -17,6 +17,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/NOTICE' // will not include NOTICE file
+        exclude 'META-INF/DEPENDENCIES' // will not include LICENSE file
+        exclude 'META-INF/ASL2.0' //will not include ALS2.0 file
+    }
 }
 
 dependencies {
@@ -24,5 +30,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:support-v4:19.1.0'
     compile 'com.mcxiaoke.volley:library:1.0.19'
-    compile 'org.apache.httpcomponents:httpmime:4.5.2'
+    compile 'org.apache.httpcomponents:httpcore:4.4.5'
+    compile('org.apache.httpcomponents:httpmime:4.5.2') {
+        exclude module: 'httpclient'
+    }
 }

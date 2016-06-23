@@ -16,4 +16,16 @@
         android:layout_height="48dp"
         android:gravity="center"
         android:text="btnget"/>
+    <Button
+        android:id="@+id/btn_post"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="btn_post"/>
+    <Button
+        android:id="@+id/btn_post2"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="btn_post_more"/>
 </LinearLayout>
