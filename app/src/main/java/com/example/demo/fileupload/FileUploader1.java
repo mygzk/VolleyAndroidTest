@@ -11,26 +11,27 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 /**
  * Created by gzhenkai on 16/6/23.
  */
-public class FileUploader {
+public class FileUploader1 {
 
     private static final String TAG = "uploadFile";
     private static final int TIME_OUT = 10 * 1000; // 超时时间
     private static final String CHARSET = "utf-8"; // 设置编码
 
     /**
-     * @param file       需要上传的文件
+     * @param files       需要上传的文件
      * @param RequestURL 请求的rul
      * @param params     需要上传的账号和密码
      * @return 返回响应的内容
      */
 
-    public static int uploadFile(File file, String RequestURL, Map<String, String> params,IUploadInterface uploadInterface) {
+    public static int uploadFile(List<File> files, String RequestURL, Map<String, String> params, IUploadInterface uploadInterface) {
         int res = 0;
         String result = null;
         String BOUNDARY = UUID.randomUUID().toString(); // 边界标识 随机生成
@@ -52,7 +53,7 @@ public class FileUploader {
             conn.setRequestProperty("Content-Type", CONTENT_TYPE + ";boundary="
                     + BOUNDARY);
 
-            if (file != null) {
+            if (files != null) {
 
 // 当文件不为空时执行上传
 
@@ -79,21 +80,31 @@ public class FileUploader {
 
 // 这里重点注意： name里面的值为服务器端需要key 只有这个key 才可以得到对应的文件
 //* filename是文件的名字，包含后缀名
+                for(File file:files){
+                    Log.e("logfiles","name:"+file.getName());
+                    sb.append("Content-Disposition: form-data; name="+file.getName()+"; filename=\""
+                            + file.getName() + "\"" + LINE_END);
+                    sb.append("Content-Type: application/octet-stream; charset="
+                            + CHARSET + LINE_END);
+                    sb.append(LINE_END);
 
-                sb.append("Content-Disposition: form-data; name=\"chat_file\"; filename=\""
+                    dos.write(sb.toString().getBytes());
+                    Log.i("EEE", "SB=" + sb.toString());
+                    InputStream is = new FileInputStream(file);
+                    byte[] bytes = new byte[1024];
+                    int len = 0;
+                    while ((len = is.read(bytes)) != -1) {
+                        dos.write(bytes, 0, len);
+                    }
+                    is.close();
+                }
+
+               /* sb.append("Content-Disposition: form-data; name=\"chat_file\"; filename=\""
                         + file.getName() + "\"" + LINE_END);
                 sb.append("Content-Type: application/octet-stream; charset="
                         + CHARSET + LINE_END);
-                sb.append(LINE_END);
-                dos.write(sb.toString().getBytes());
-                Log.i("EEE", "SB=" + sb.toString());
-                InputStream is = new FileInputStream(file);
-                byte[] bytes = new byte[1024];
-                int len = 0;
-                while ((len = is.read(bytes)) != -1) {
-                    dos.write(bytes, 0, len);
-                }
-                is.close();
+                sb.append(LINE_END);*/
+
                 dos.write(LINE_END.getBytes());
                 byte[] end_data = (PREFIX + BOUNDARY + PREFIX + LINE_END)
                         .getBytes();

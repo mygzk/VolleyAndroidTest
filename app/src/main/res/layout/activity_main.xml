@@ -28,4 +28,16 @@
         android:layout_height="48dp"
         android:gravity="center"
         android:text="btn_post_more"/>
+    <Button
+        android:id="@+id/btn_post3"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="btn_post3"/>
+    <Button
+        android:id="@+id/btn_post4"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="btn_post4_more"/>
 </LinearLayout>
