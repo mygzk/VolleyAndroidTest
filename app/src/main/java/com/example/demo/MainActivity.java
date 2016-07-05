@@ -6,7 +6,7 @@ import android.view.View;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private String TAG = MainActivity.class.getSimpleName();
-    private String url = "http://192.168.253.13:80/test.php?id=12&s=2";
+    private String url = "http://172.16.0.32/User.svc/ShowName?name=gzk";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_get:
+                break;
+            case R.id.btn_post:
+                break;
+        }
+    }
+
+    private void getTest(){
 
     }
+
 }

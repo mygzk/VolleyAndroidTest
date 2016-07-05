@@ -14,6 +14,7 @@ import java.io.UnsupportedEncodingException;
 
 @SuppressLint("NewApi")
 public class RequestManager {
+    private static final String charset = "UTF-8";
     public static RequestQueue mRequestQueue = Volley.newRequestQueue(App
             .getContext());
 
@@ -98,7 +99,7 @@ public class RequestManager {
             public void onResponse(byte[] arg0) {
                 String data = null;
                 try {
-                    data = new String(arg0, "UTF-8");
+                    data = new String(arg0, charset);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -137,7 +138,7 @@ public class RequestManager {
             public void onResponse(byte[] arg0) {
                 String data = null;
                 try {
-                    data = new String(arg0, "UTF-8");
+                    data = new String(arg0, charset);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
