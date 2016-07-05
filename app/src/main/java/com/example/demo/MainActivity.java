@@ -6,8 +6,6 @@ import android.view.View;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private String TAG = MainActivity.class.getSimpleName();
-
-    //  private String url = "http://172.16.0.10:8080/1.txt";
     private String url = "http://192.168.253.13:80/test.php?id=12&s=2";
 
     @Override
@@ -20,7 +18,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.btn_post2).setOnClickListener(this);
         findViewById(R.id.btn_post3).setOnClickListener(this);
         findViewById(R.id.btn_post4).setOnClickListener(this);
-
     }
 
     @Override

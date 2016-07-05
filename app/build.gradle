@@ -17,17 +17,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    packagingOptions {
-        exclude 'META-INF/NOTICE' // will not include NOTICE file
-        exclude 'META-INF/DEPENDENCIES' // will not include LICENSE file
-        exclude 'META-INF/ASL2.0' //will not include ALS2.0 file
-    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:support-v4:19.1.0'
-
+    compile 'com.mcxiaoke.volley:library:1.0.19'
+    compile 'com.google.code.gson:gson:2.7'
 }
