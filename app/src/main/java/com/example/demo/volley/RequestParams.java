@@ -20,10 +20,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * 小袁
- * Created by Administrator on 2015/3/11.
- */
+
 public class RequestParams {
     private static String ENCODING = "UTF-8";
 

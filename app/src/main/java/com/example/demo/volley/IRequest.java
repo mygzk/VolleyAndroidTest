@@ -2,10 +2,6 @@ package com.example.demo.volley;
 
 import android.content.Context;
 
-/**
- * 小袁
- * Created by Administrator on 2015/3/11.
- */
 public class IRequest {
 	/**
 	 * 返回String get

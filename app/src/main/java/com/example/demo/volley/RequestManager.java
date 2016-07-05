@@ -12,10 +12,6 @@ import com.example.demo.volley.util.JsonUtils;
 
 import java.io.UnsupportedEncodingException;
 
-/**
- * 小袁
- * Created by Administrator on 2015/3/11.
- */
 @SuppressLint("NewApi")
 public class RequestManager {
     public static RequestQueue mRequestQueue = Volley.newRequestQueue(App

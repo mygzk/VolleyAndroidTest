@@ -2,12 +2,6 @@ package com.example.demo.volley.util;
 
 import com.google.gson.Gson;
 
-/**
- * json管理
- * 
- * @author Administrator
- * 
- */
 public class JsonUtils {
 	private static Gson gson = new Gson();
 
