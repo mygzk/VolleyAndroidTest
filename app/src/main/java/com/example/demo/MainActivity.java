@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,9 @@ import com.android.volley.VolleyError;
 import com.example.demo.volley.IRequest;
 import com.example.demo.volley.RequestListener;
 import com.example.demo.volley.RequestParams;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.xutils.common.Callback;
 import org.xutils.x;
@@ -20,6 +24,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private String urlPost = "http://172.16.0.32:81/User.svc";
 
     private TextView tvResult;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +43,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.btn_xutilpost).setOnClickListener(this);
         findViewById(R.id.btn_post4).setOnClickListener(this);
         tvResult = (TextView) findViewById(R.id.result);
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     @Override
@@ -122,8 +134,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void xutilPostTest() {
         org.xutils.http.RequestParams params = new org.xutils.http.RequestParams(urlPost);
-        params.addBodyParameter("name","gzk");
-        params.addBodyParameter("name1","lxx");
+        params.addBodyParameter("name", "gzk");
+        params.addBodyParameter("name1", "lxx");
         x.http().post(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
@@ -151,4 +163,43 @@ public class MainActivity extends Activity implements View.OnClickListener {
         });
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Main Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app URL is correct.
+                Uri.parse("android-app://com.example.demo/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client, viewAction);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Main Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app URL is correct.
+                Uri.parse("android-app://com.example.demo/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client, viewAction);
+        client.disconnect();
+    }
 }
