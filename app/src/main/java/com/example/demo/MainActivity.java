@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -12,7 +11,6 @@ import com.android.volley.VolleyError;
 import com.example.demo.volley.IRequest;
 import com.example.demo.volley.RequestListener;
 import com.example.demo.volley.RequestParams;
-import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
@@ -82,12 +80,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
     String f4 = rootPath + File.separator + "4.jpg";
     String f5 = rootPath + File.separator + "5.JPEG";
     String f6 = rootPath + File.separator + "6.jpg";
+    String f7 = rootPath + File.separator + "7.txt";
+    String f8 = rootPath + File.separator + "8.xml";
     File file1 = new File(f1);
     File file2 = new File(f2);
     File file3 = new File(f3);
     File file4 = new File(f4);
     File file5 = new File(f5);
     File file6 = new File(f6);
+    File file7 = new File(f7);
+    File file8 = new File(f8);
 
     private void volleyGetTest() {
         IRequest.get(this, urlGet, new RequestListener() {
@@ -130,6 +132,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
         if (file6.exists()) {
             params.put("file6", file6);
+        }
+        if (file7.exists()) {
+            params.put("file7", file7);
+        }
+        if (file8.exists()) {
+            params.put("file8", file8);
         }
         IRequest.post(this, urlPost, params, new RequestListener() {
             @Override
@@ -199,6 +207,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (file6.exists()) {
             params.addBodyParameter("file6", file6);
         }
+        if (file7.exists()) {
+            params.addBodyParameter("file7", file7);
+        }
+        if (file8.exists()) {
+            params.addBodyParameter("file8", file8);
+        }
         x.http().post(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
@@ -226,43 +240,4 @@ public class MainActivity extends Activity implements View.OnClickListener {
         });
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Main Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://com.example.demo/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Main Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://com.example.demo/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
-    }
 }
