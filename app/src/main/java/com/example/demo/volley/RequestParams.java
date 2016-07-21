@@ -1,7 +1,5 @@
 package com.example.demo.volley;
 
-import com.example.demo.volley.util.FileMimeType;
-
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -62,8 +60,9 @@ public class RequestParams {
      */
     public void put(String key, File file) {
         try {
-            String contentType = FileMimeType.getMimeType(file);
-            put(key, new FileInputStream(file), file.getName(),contentType);
+           // String contentType = FileMimeType.getMimeType(file);
+            //put(key, new FileInputStream(file), file.getName(),contentType);
+            put(key, new FileInputStream(file), file.getName());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
