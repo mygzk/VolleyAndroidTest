@@ -64,6 +64,7 @@ public class RequestManager {
         ByteArrayRequest request = new ByteArrayRequest(Request.Method.POST,
                 url, params, responseListener(listener),
                 responseError(listener));
+        request.setShouldCache(false);
         addRequest(request, tag);
     }
 

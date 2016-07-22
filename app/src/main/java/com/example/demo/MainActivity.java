@@ -145,26 +145,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
         params.put("Age", "gzk_post");
         params.put("Name", "zayh");
         params.put("com1", "zayh1");
-        if (file10.exists()) {
+       /* if (file10.exists()) {
             params.put("File", f9);
         }
         if (file1.exists()) {
             params.put("img1", file1);
-        }
-     /*   if (file1.exists()) {
-            params.put("file1", file1);
         }*/
-       /*
+        if (file1.exists()) {
+            params.put("File", file1);
+        }
         if (file2.exists()) {
-            params.put("file2", file2);
+            params.put("img1", file2);
         }
         if (file3.exists()) {
             params.put("file3", file3);
         }
         if (file4.exists()) {
             params.put("file4", file4);
-        }*/
-        /*if (file5.exists()) {
+        }
+        if (file5.exists()) {
             params.put("file5", file5);
         }
         if (file6.exists()) {
@@ -175,7 +174,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
         if (file8.exists()) {
             params.put("file8", file8);
-        }*/
+        }
         IRequest.post(this, urlPost, params, new RequestListener() {
             @Override
             public void requestSuccess(String result) {
@@ -305,15 +304,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
         params.put("Age", "gzk_post");
         params.put("Name", "zayh");
         params.put("com1", "zayh1");
-       /* if (file1.exists()) {
-            params.put("file1", file1);
+        if (file1.exists()) {
+            params.put("File", file1);
         }
         if (file2.exists()) {
-            params.put("file2", file2);
+            params.put("img1", file2);
         }
         if (file5.exists()) {
             params.put("file5", file5);
-        }*/
+        }
         if (file6.exists()) {
             params.put("file6", file6);
         }
@@ -323,7 +322,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (file8.exists()) {
             params.put("file8", file8);
         }
-        mHttpTools.post(urlPost1,params , new HttpCallback<String>() {
+        mHttpTools.post(urlPost,params , new HttpCallback<String>() {
             @Override
             public void onStart() {
 
